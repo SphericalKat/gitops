@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin-ingress
+  # no funnel for this for now
+  # annotations:
+  #   tailscale.com/funnel: "true"
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: jellyfin-svc
+      port:
+        number: 8096
+
