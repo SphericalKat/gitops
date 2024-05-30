@@ -10,11 +10,6 @@ spec:
   selector:
     matchLabels:
       app: jellyfin
-  
-  volumes:
-    - name: jellyfin-data
-      persistentVolumeClaim:
-        claimName: jellyfin-pvc
 
   template:
     metadata:
@@ -33,3 +28,13 @@ spec:
               mountPath: /cache
             - name: jellyfin-data
               mountPath: /data
+      volumes:
+      - name: jellyfin-data
+        persistentVolumeClaim:
+          claimName: jellyfin-pvc
+      - name: jellyfin-cache
+        persistentVolumeClaim:
+          claimName: jellyfin-pvc
+      - name: jellyfin-config
+        persistentVolumeClaim:
+          claimName: jellyfin-pvc
